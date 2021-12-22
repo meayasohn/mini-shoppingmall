@@ -1,3 +1,6 @@
+//////////////////////////////////////////////////////
+/////// All Data List                   //////////////
+//////////////////////////////////////////////////////
 var shoppingList =[];
   
 // 데이터를 json에서 load 한다.
@@ -20,9 +23,10 @@ $('#list').empty();
 }
 
 function loadList(list){
-for(let i=0; i<list.length; i++){
-  addItem(list[i]);
-}
+  clearItem();
+  for(let i=0; i<list.length; i++){
+    addItem(list[i]);
+  }
 }
 
 // 리스트에 item 추가
@@ -46,6 +50,25 @@ var addItemBody =`
 $('#list').append(addItemBody);
 }
 
+function filterData(filter){
+  const newList = shoppingList.filter(item => {
+
+    var index = item.product_name.indexOf(filter);
+    // console.log('indexing중입니다',index);
+    if(index >= 0){
+      return true;
+    }else{
+      return false;
+    }
+  });
+  console.log('데이터 필터 되었습니다.',newList);
+  return newList;
+}
+
+//////////////////////////////////////////////////////
+/////// UI List                         //////////////
+//////////////////////////////////////////////////////
+
 $( document ).ready(function() {
   //데이터 목록을 가져온다.
   loadData();
@@ -63,4 +86,19 @@ $('#list-add').click(function(){
 
 $('#list-clear').click(function(){
   clearItem();
+});
+
+$('#list-filter').click(function(){
+  loadList(filterData("세척기"));
+});
+
+var oldVal ="";
+$('#search-item').on("propertychange change keyup paste input", function(){
+  var currentVal = $(this).val();
+  if(currentVal == oldVal) {
+      return;
+  }
+  oldVal = currentVal;
+  // console.log('key 입력이 되었습니다.',currentVal);
+  loadList(filterData(currentVal));
 });
