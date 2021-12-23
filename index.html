@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="minishopping.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="minishopping.js">
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k=" crossorigin="anonymous"></script>
 
   <title>Document</title>
 </head>
@@ -37,53 +38,24 @@
     </div>
     <div class="row "> <!--목록상세-->
       <!-- 상품리스트 [동적할당]--> 
-      <div class="col-8 container-fluid">
+      <div class="col-8">
         <div id="list" class="row">
 
         </div>
       </div>
-      <!-- <div class="col m-0 p-0 border">
-        <div class="card h-100">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">제목1</h5>
-            <p class="card-text">content</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
+
+       <!-- 장바구니 -->
+      <div class="col-4 ">
+        <div class="row p-2 cart border">
+          <div class="cart-box">이곳에 상품을 놓아주세요</div>
+          <div class="p-2 float-right total ">총 합계 0원</div>
+          <div class="btn btn-primary w-100">구매하기</div>
+        </div>
+        <div class="row">
+
         </div>
       </div>
-      <div class="col m-0 p-0 border">
-        <div class="card h-100">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">제목2</h5>
-            <p class="card-text">content</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col m-0 p-0 border">
-        <div class="card h-100">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">제목3</h5>
-            <p class="card-text">content</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>  -->
-      <!-- 장바구니 -->
-      <div class="col-4 cart border">
-        <div class="cart-box mt-2 mb-2 p-2">이곳에 상품을 놓아주세요</div>
-        <div class="float-right total ">총 합계 0원</div>
-        <div class="btn btn-primary mt-2 mb-2 w-100 ">구매하기</div>
-      </div>
+      
     </div>
   </div>
 

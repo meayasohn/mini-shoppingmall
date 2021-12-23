@@ -1,21 +1,18 @@
 //////////////////////////////////////////////////////
-// All Data List 
-// JSON 데이터 로드 - 카드 구성 
-// 20211222 데이터를 로드하고 그때그때 맞는 카드를 다시 listup 하는 방식이었음
-// 20211223 모든 데이터를 로드하고 카드에 맞게 show/hid 하는 방식으로 바꿈
+/////// All Data List                   //////////////
 //////////////////////////////////////////////////////
-var shoppingList =[];  //original Data를 저장
-var $list = $('#list');  // card item 이 display 되는 곳
+var shoppingList =[];
+var $list = $('#list');
   
 // 데이터를 json에서 load 한다.
-function loadJSON(){
+function loadData(){
 $.getJSON("store.json", function(data){
         // console.log(data);
         for(let i=0; i<data.products.length; i++){
           shoppingList[i] = {...data.products[i]};
           console.log(shoppingList[i]);
         }
-      makeList(shoppingList);
+      loadList(shoppingList);
     }).fail(function(){
         console.log("An error has occurred.");
     });
@@ -26,25 +23,10 @@ function clearItem(){
 $('#list').empty();
 }
 
-// 데이터를 만들어 놓는 상태. 카드까지 같이 만들어 놓는다.
-function makeList(list){
+function loadList(list){
   clearItem();
   for(let i=0; i<list.length; i++){
-    var addItemBody =`
-    <div id="carditem${i}" class="col-3 m-1 p-0 hide">
-      <div class="card h-100">
-        <img src="../image/${data.photo}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <p class="card-title">${data.product_name}</p>
-          <p class="card-text">${data.brand_name}</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">${data.price}</small>
-        </div>
-      </div>
-    </div>
-  `;
-  $('#list').append(addItemBody);
+    addItem(list[i]);
   }
 }
 
@@ -52,6 +34,21 @@ function makeList(list){
 function addItem(data){
 // console.log('addItem',data);
 
+var addItemBody =`
+  <div class="col-3 m-1 p-0">
+    <div class="card h-100">
+      <img src="../image/${data.photo}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-title">${data.product_name}</p>
+        <p class="card-text">${data.brand_name}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">${data.price}</small>
+      </div>
+    </div>
+  </div>
+`;
+$('#list').append(addItemBody);
 }
 
 function filterData(filter){
@@ -74,12 +71,13 @@ function filterData(filter){
 //////////////////////////////////////////////////////
 
 $( document ).ready(function() {
-  loadJSON();
+  //데이터 목록을 가져온다.
+  loadData();
 
-  // 목록을 추가해 놓는다.
-  for(let i=0; i<4; i++){
-    addItem(i);
-  }
+  // // 목록을 추가해 놓는다.
+  // for(let i=0; i<4; i++){
+  //   addItem(i);
+  // }
 console.log("아이템 add 완료");
 });
 
