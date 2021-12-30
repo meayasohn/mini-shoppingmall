@@ -110,8 +110,3 @@ $('#list-filter').draggable(function(){
   console.log("item is moving");
 });
 
-// $(function () {
-//   $("#list-filter").draggable({
-//     console.log("item is moving");
-//   });
-// });
